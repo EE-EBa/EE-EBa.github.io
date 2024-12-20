@@ -5,10 +5,47 @@ categories: [Embedded]
 tags: [nvim , openocd]
 ---
 
-# package manager tool
+# Steps for installing Openocd
+## Introduce tools chains
+1. openocd 0.12.0
+2. arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi
+it include arm-gcc and arm-gdb
+
+## install openocd 0.12.0
+it's package is in archlinuc AUR and pacman's repository , I tried to many times install it by using AUR,<br>
+but not success. I think reason is my network . Cause I'm in china. So,I use pacman's openocd pakage to install.it work!<br>
+On archlinux , I don't worried many dependency package when I install software.Pacman or AUR tool can be  reliable.
+
+## install arm-none-eabi-gdb's dependency package
+
+1. when we install arm-none-eabi tools chain in arm website. The arm-none-eabi-gdb's function is not full.
+2. maybe you can see this error message " error while loading shared libraries: libncurses.so.5", [The answer is below here:](https://bbs.archlinux.org/viewtopic.php?id=254657)
+
+   
+   ```bash
+   yay -S ncurses5-compat-libs
+   ```
+3. when you run arm-none-eabi-gdb gain,maybe you see this error:"arm-none-eabi-gdb: error while loading shared libraries:
+<br>libcrypt.so.1: cannot open shared object file: no such file or directory" . [The answer is below](https://unix.stackexchange.com/questions/691479/how-to-deal-with-missing-libcrypt-so-1-on-arch-linux) :
+
+```bash
+sudo pacman -S core/libxcrypt-compat
+
+```
+4. install python's dependency
+On archlinux , default python is than 3.8, however the arm-gnu-toolchain-13.2.Rel1-x86_64 only support python3.8.<br>
+So,we should install python3.8. this package can be find on aur repository.
+
+```bash
+yay -S python38
+```
+
+# Configuration of Nvim
+
+## package manager tool
 I used 'lazy.nvim' to manage my plugins. You can find it at [github](https://github.com/folke/lazy.nvim).
 
-# nvim directory structure
+## nvim directory structure
 
 ```text
 ├── init.lua
@@ -44,9 +81,9 @@ I used 'lazy.nvim' to manage my plugins. You can find it at [github](https://git
 
 
 ```
-# lsp
+## lsp
 language c: I use plugins is clangd.
-## clangd.yaml configuration
+### clangd.yaml configuration
 In order to use clangd for indexing more accurately, you need to configure clangd.yaml.As follows:
 ```yaml
 # clangd.yaml location:~/.config/clangd/clangd.yaml
@@ -58,7 +95,7 @@ CompileFlags:
       StandardLibrary: No
 ```
 
-# Essential considerations for debugging preemptive interrupts using openocd + arm-none-eabi-gdb
+## Essential considerations for debugging preemptive interrupts using openocd + arm-none-eabi-gdb
 1. Triggered breakpoints must be removed
 2. Using "continue" for debugging ,not single debugging
 3. Preemptive interrupts can disrupt any step of fetching,assigning,or writing back.
