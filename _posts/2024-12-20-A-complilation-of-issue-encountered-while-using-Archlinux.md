@@ -1,3 +1,8 @@
+---
+title: A complilation of issue encountered while using Archlinux
+categories: [Linux]
+tags: [Linux , iwctl , git , stow , dotfiles]
+---
 # issue 1
 Cause I not log in my arch for two days, I can not launch KDE service when I start my PC.<br>
 Meanwhile I can not use tty1~6 to solve this issue. When I arrived tty windows , I can not input any parameters in command line.
