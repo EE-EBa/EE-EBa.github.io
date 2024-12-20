@@ -3,6 +3,8 @@ title: Embedded development notes
 date: 2024-12-20
 categories: [Embedded]
 tags: [nvim , openocd]
+pin: [true]
+comments: true
 ---
 
 # Steps for installing Openocd

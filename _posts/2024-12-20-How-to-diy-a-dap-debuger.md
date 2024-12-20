@@ -9,7 +9,6 @@ tags: [dap]     # TAG names should always be lowercase
 # 以下默认false
 math: true
 mermaid: true
-pin: true
 
 # 以下默认ture
 toc: false
