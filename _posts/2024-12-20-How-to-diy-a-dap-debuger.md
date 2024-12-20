@@ -26,8 +26,6 @@ comments: false
 
 # ref
 1. [DAP-LINK](https://github.com/ARMmbed/DAPLink/tree/main)
-2. [ARM调试工具 UINIO-DAP-LINK](http://www.uinio.com/Project/UINIO-DAP-Link/#dap-link-%E7%AE%80%E4%BB%8B)
 3. [DAP_LINK下载器固件编译下载过程](https://blog.csdn.net/weixin_45829708/article/details/124359707)
 4. [Build Your Own Low Cost CMSIS-DAP Debug Unit](https://ravikiranb.com/projects/cmsis-dap-debug/)
 5. [DAPLink and the USB interface](https://tech.microbit.org/software/daplink-interface/)
-6. [用STM32F103C8芯片做一个CMSIS-DAP调试器](http://wiki.geniekits.com//zh/usb_express/cmsis-dap#dokuwiki__top)
