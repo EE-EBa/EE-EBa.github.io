@@ -1,7 +1,13 @@
 ---
 title: A complilation of issue encountered while using Archlinux
+date: 2024-12-20
 categories: [Linux]
 tags: [Linux , iwctl , git , stow , dotfiles]
+comments:
+  active: utterances # 使用github issue作为文章的评论系统
+  utterances:
+    repo: EE-EBa/EE-EBa.github.io        # <gh-username>/<repo>
+    issue_term: title  # < url | pathname | title | ...>
 ---
 # issue 1
 Cause I not log in my arch for two days, I can not launch KDE service when I start my PC.<br>

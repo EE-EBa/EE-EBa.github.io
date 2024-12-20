@@ -1,5 +1,6 @@
 ---
 title:  A debugging issue:"Unable to read memory" when connecting to openocd
+date: 2024-12-20
 categories: [Embedded , issue]
 tags: [openocd , debug]
 ---

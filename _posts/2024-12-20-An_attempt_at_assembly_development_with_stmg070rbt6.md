@@ -1,5 +1,6 @@
 ---
 title: An attempt at assembly development with an STM32G070RBT6
+date: 2024-12-20
 categories: [Embedded , openocd]
 tags: [openocd , cortex , debug]
 
