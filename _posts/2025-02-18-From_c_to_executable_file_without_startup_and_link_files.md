@@ -1,3 +1,11 @@
+---
+title: Debug mcu with commands ,no ld file and startup file.
+date: 2025-02-18
+categories: [Embedded]
+tags: [debug]
+---
+
+
 # 背景
 为了进一步理解嵌入式c语言在mcu中的调试过程,本文采用纯命令行,不带启动文件与链接文件进行c程序调试.以验证某些c语言在mcu中的功能.
 
