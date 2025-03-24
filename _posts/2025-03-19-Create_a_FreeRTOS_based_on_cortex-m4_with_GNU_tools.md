@@ -18,9 +18,13 @@ The layer includes startup file  ,link file  and other HAL library.
 2. Copy link file: STM32Cube/Repository/STM32Cube_FW_G4_V1.6.1/Projects/NUCLEO-G431RB/Templates/STM32CubeIDE/STM32G431RBTX_FLASH.ld
 3. When you import this files, we need to select the target STMG4xx device in stm32g4xx.h , if we use cortex-m4 of stm32.
 4. Add a stm32g4xx_hal_conf.h: STM32Cube/Repository/STM32Cube_FW_G4_V1.6.1/Projects/NUCLEO-G431RB/Templates/Inc/stm32g4xx_hal_conf.h 
+
 # 2. Create BSP(Board Support Package) to initialize target MCU
+
 when we create functions in bsp files. We need assert functions. So we need add qassert.c and qassert.h to implement assert functions. The qassert files come from QPC frame.
+
 ## for stm32
+
 1. Configure system clock PLL etc. 
 
 # 3. Import FreeRTOS Kernel
