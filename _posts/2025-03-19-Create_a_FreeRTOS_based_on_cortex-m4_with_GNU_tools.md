@@ -25,12 +25,16 @@ when we create functions in bsp files. We need assert functions. So we need add 
 
 # 3. Import FreeRTOS Kernel
 
-1. Import the FreeRTOSConfig.h : FreeRTOS-Kernel/examples/template_configuration/FreeRTOSConfig.h
-2. Import portable : due to my compile tool chains is GCC, So the port directory is : 
-  2.1 FreeRTOS-Kernel/portable/GCC/ARM_CM4F
-  2.2 FreeRTOS-Kernel/portable/MemMang/heap_x.c
-  2.3 FreeRTOS-Kernel/portable/Commin
-3. Create default handler functions: interrupt.c/interrupt.h. Otherwise when we run program, it will jump into infinite loop.
+## 3.1 Import the FreeRTOSConfig.h : FreeRTOS-Kernel/examples/template_configuration/FreeRTOSConfig.h
+
+## 3.2 Import portable : due to my compile tool chains is GCC, So the port directory is : 
+
+  *  FreeRTOS-Kernel/portable/GCC/ARM_CM4F
+  *  FreeRTOS-Kernel/portable/MemMang/heap_x.c
+  *  FreeRTOS-Kernel/portable/Commin
+
+## 3.3 Create default handler functions: interrupt.c/interrupt.h. Otherwise when we run program, it will jump into infinite loop.
+
 ```c 
 /* interrupt.c */
 #include "interrupt.h"
@@ -40,7 +44,9 @@ void TIM6_DAC_IRQHandler(void){
     HAL_TIM_IRQHandler(&htim6);
 }
 ```
-4. Rename stm32g4xx_hal_timebase_tim_template.c to stm32g4xx_hal_timebase_tim.c , The purpose of this operation is to allow us to set the clock source of HAL to a timer instead of system clock.
+
+## 3.4 Rename stm32g4xx_hal_timebase_tim_template.c to stm32g4xx_hal_timebase_tim.c , The purpose of this operation is to allow us to set the clock source of HAL to a timer instead of system clock.
+
 ```c 
 /* stm32g4xx_hal_timebase_tim.c */
 /* Includes ------------------------------------------------------------------*/
@@ -160,7 +166,9 @@ void HAL_ResumeTick(void) {
   __HAL_TIM_ENABLE_IT(&htim6, TIM_IT_UPDATE);
 }
 ```
-5. Create the functions vApplicationStackOverflowHook in middle layer . The purpose of this operation is to detect stack overflow.
+
+## 3.5 Create the functions vApplicationStackOverflowHook in middle layer . The purpose of this operation is to detect stack overflow.
+
 ```c 
 /* freeRTOS_hooks.c */
 #include "FreeRTOS.h"
@@ -177,7 +185,8 @@ void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
     for(;;);
 }
 ```
-6. Set macro configCPU_CLOCK_HZ as systemCoreClock in FreeRTOSConfig.h . The systemCoreClock is come from HAL. 
+## 3.6 Set macro configCPU_CLOCK_HZ as systemCoreClock in FreeRTOSConfig.h . The systemCoreClock is come from HAL. 
+
 ```c 
 /* FreeRTOSConfig.h */
 #if defined(__GNUC__)
@@ -188,14 +197,18 @@ extern uint32_t SystemCoreClock;
 #define configCPU_CLOCK_HZ    ( SystemCoreClock )
 
 ```
-7. Set macros ,vPortSVCHandler/xPortPendSVHandler/xPortSysTickHandler in FreeRTOSConfig.h . Definitions that map the FreeRTOS port interrupt handlers to their CMSIS
+
+## 3.7 Set macros ,vPortSVCHandler/xPortPendSVHandler/xPortSysTickHandler in FreeRTOSConfig.h . Definitions that map the FreeRTOS port interrupt handlers to their CMSIS
+
 ```c 
 /* FreeRTOSConfig.h */
 #define vPortSVCHandler SVC_Handler
 #define xPortPendSVHandler PendSV_Handler
 #define xPortSysTickHandler SysTick_Handler
 ```
-8. Set macros about system call priority and  interrupt priority.
+
+## 3.8 Set macros about system call priority and  interrupt priority.
+
 ```c 
 /* FreeRTOSConfig.h */
 /* These values are specific to Cortex-M4 (STM32G431): */
