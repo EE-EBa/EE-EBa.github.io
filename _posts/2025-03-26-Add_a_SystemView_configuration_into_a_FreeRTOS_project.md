@@ -135,6 +135,7 @@ int main(void) {
 
 # 8. Generate .SVDat file
 
+My debug tools is st-link+openocd, so for simplify, make SystemView woke in single-shot recode. So .SVDat file is necessary.
 * Hit run and the pause after couple of seconds.
 * Write down the code  bellow 
 
