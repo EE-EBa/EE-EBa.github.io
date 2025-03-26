@@ -1,5 +1,5 @@
 ---
-title:Archlinux usage 
+title: Archlinux usage 
 date: 2025-03-26
 categories: [archlinux]
 tags: [Linux , iwctl ]
