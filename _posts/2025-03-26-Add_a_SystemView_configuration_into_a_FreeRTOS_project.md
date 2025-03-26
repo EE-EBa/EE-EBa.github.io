@@ -3,7 +3,6 @@ title: Add a SystemView configuration into a FreeRTOS project
 date: 2025-03-26
 categories: [FreeRTOS]
 tags: [ openocd, debug,RTOS ,GNU,makefile]
-pin: [true]
 ---
 
 # 1. Import generic configuration
