@@ -7,12 +7,11 @@ tags: [Linux , iwctl ]
 
 # issue 1
 
-    Cause I not log in my arch for two days, I can not launch KDE service when I start my PC.<br>
-Meanwhile I can not use tty1~6 to solve this issue. When I arrived tty windows , I can not input any parameters in command line.
+Cause I not log in my arch for two days, I can not launch KDE service when I start my PC.Meanwhile I can not use tty1~6 to solve this issue. When I arrived tty windows , I can not input any parameters in command line.
 
 ## solved method:
 
-    Making a archlinux installing USB. Cause we can not into damaged system from tty, so we just into this archlinux by installing USB.
+Making a archlinux installing USB. Cause we can not into damaged system from tty, so we just into this archlinux by installing USB.
 
 ### Solve steps:
 
@@ -30,54 +29,53 @@ ping www.gnu.org
 
 #### 4. synchro your local time
 
-    ```shell
-    timedatectl set-ntp true
-    ```
+```shell
+timedatectl set-ntp true
+```
 
 #### 5. Mount system partitioning
 
-    first of all , you neet mount bootloader(efi) partitioning,second mount boot partitioning,last mount home.
+first of all , you neet mount bootloader(efi) partitioning,second mount boot partitioning,last mount home.
 
-    ```shell
-    mount /dev/nvme0n1p3 /mnt
-    mount /dev/nvme0n1p1 /mnt/efi
-    mount /dev/nvme0n1p4 /mnt/home
-    ```
+```shell
+mount /dev/nvme0n1p3 /mnt
+mount /dev/nvme0n1p1 /mnt/efi
+mount /dev/nvme0n1p4 /mnt/home
+```
 
 #### 6. Into damaged system
 
-    ```shell
-    arch-chroot /mnt
-    ```
+```shell
+arch-chroot /mnt
+```
 
 #### 7.  reinstall your linux kernel
 
-   ```shell
-   pacman -S linux
-   ```
+```shell
+pacman -S linux
+```
 #### 8. update your system
 
-   ```shell
-   pacman -Syu
-   ```
+```shell
+pacman -Syu
+```
 
 #### 9. installing bootloader
 
-    Maybe you can see "no boot device",when you reboot you system
-    so you need to reinstall bootloader.
+Maybe you can see "no boot device",when you reboot you system so you need to reinstall bootloader.
 
-    ```shell
-    grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
-    ```
+```shell
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+```
 
 #### 10. reboot you system
 
-    ```shell
-    exit
-    reboot
-    ```
+```shell
+exit
+reboot
+```
 
-    Issue solved!
+Issue solved!
 
 # Configuration of git
 
