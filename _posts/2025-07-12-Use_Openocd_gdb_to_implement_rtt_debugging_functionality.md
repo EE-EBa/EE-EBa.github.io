@@ -17,7 +17,7 @@ tags:
     stow,
     dotfiles,
   ]
-pin: [true]
+pin: [false]
 ---
 
 # Background
