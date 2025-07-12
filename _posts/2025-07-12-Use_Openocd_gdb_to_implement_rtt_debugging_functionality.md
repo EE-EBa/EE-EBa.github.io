@@ -120,6 +120,12 @@ dap.configuration.rust = {
 					{
 						text = "monitor reset halt",
 					},
+      		{
+						text = "monitor rtt stop",
+					},
+					{
+						text = "monitor rtt server stop 9090",
+					},
 					{
 						text = "monitor rtt server start 9090 0",
 					},
