@@ -145,8 +145,19 @@ My debug tools is st-link+openocd, so for simplify, make SystemView woke in sing
 define memory_log
 	set logging enable on
 	dump binary memory 001.SVDat _SEGGER_RTT.aUp[1].pBuffer _SEGGER_RTT.aUp[1].pBuffer+_SEGGER_RTT.aUp[1].WrOff
-	set logging off
+    shell { \
+    echo ";"; \
+    echo "; Version     SEGGER SystemView V3.6b"; \
+    echo "; RecordTime  $(date)"; \
+    echo "; Author      EE-Eba"; \
+    echo "; Title    "; \
+    echo "; Description "; \
+    echo ";"; \
+    cat 001.SVDat; \
+} > tempfile && mv tempfile 001.SVDat
+    set logging off
 end
+
 ```
 
 * Add a description at the top of 001.SVDat,otherwise SystemView can not recognise this file.
@@ -163,3 +174,6 @@ end
 
 ```
 
+# 8. Enable configUSE_TIME_SLICING 
+For FreeRTOS ,if tasks have same priority ,and the rtos work in preemption mode, the configUSE_TIME_SLICING need to set 1.
+Otherwise no time_slicing
